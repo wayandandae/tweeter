@@ -1,0 +1,28 @@
+nav {
+  height: 120px;
+  width: 100vw; /* use 100% viewport width */
+  background-color: #4056A1;
+  color: white;
+  padding-left: 1.5em;
+  padding-right: 1.5em;
+  padding-top: 1.5em;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  position: fixed; /* navbar stays fixed on top of the page while scrolling */
+}
+
+nav > span {
+  font-family: 'Bungee', cursive;
+  font-size: 2.2em;
+}
+
+nav > div {
+  font-size: 1.2em;
+  text-align: center;
+}
+
+/* angle double down icon */
+i.fa-angles-down {
+  color: red;
+}

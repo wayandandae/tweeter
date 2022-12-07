@@ -1,0 +1,17 @@
+/* require element ID due to conflict with the header in main.container */
+header#profile {
+  padding-top: 120px;
+  height: 520px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-image: url(../images/az-subtle.png); /* repeating pattern image map */
+  background-color: #f59b56;
+  color: white;
+  font-size: 1.2em;
+}
+
+span#last-name {
+  font-weight: 100; /* less weight on the last name in profile header */
+}

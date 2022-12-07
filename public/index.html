@@ -1,29 +1,84 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
+    <meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- Meta Information -->
     <title>Tweeter - Home Page</title>
 
     <!-- External CSS -->
+    <!-- Normalize.css v8.0.1 as an alternative to CSS reset -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css" type="text/css" />
+    <!-- Bungee / Source Sans Pro fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bungee&family=Source+Sans+Pro:ital,wght@0,300;0,600;1,300;1,600&display=swap">
+    <!-- Font Awesome library for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
     <!-- App CSS -->
     <link rel="stylesheet" href="/styles/layout.css" type="text/css" />
+    <link rel="stylesheet" href="/styles/nav.css" type="text/css" />
+    <link rel="stylesheet" href="/styles/header.css" type="text/css" />
 
     <!-- External JS -->
+    <!-- JQuery 3.4.1 compressed library -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 
     <!-- App JS -->
     <script type="text/javascript" src="/scripts/client.js"></script>
+    <script type="text/javascript" src="/scripts/composer-char-counter.js"></script>
   </head>
 
   <body>
     <!-- Top nav bar (fixed) -->
     <nav>
-      <span>tweeter</span>
+      <span>TWEETER</span>
+      <div>
+        <b>Write</b> a new tweet<br>
+        <a href="#"><i class="fa-solid fa-angles-down"></i></a>
+      </div>
     </nav>
 
+    <!-- Top avatar / name header -->
+    <header id="profile">
+      <div>
+        <img src="/images/profile-hex.png"> 
+      </div>
+      <div>
+        <h2>Elon <span id="last-name">Mengsk</span></h2>
+      </div>
+    </header>
+
     <!-- Page-specific (main) content here -->
-    <main class="container"></main>
+    <main class="container">
+      <section class="new-tweet">
+        <h2>Compose Tweet</h2>
+        <form>
+          <textarea name="text" id="tweet-text" placeholder="What are you humming about?"></textarea>
+          <div class="tweet-counter">
+            <button type="submit" id="tweet">Tweet</button>
+            <output name="counter" id="counter" for="tweet-text">140</output>
+          </div>
+        </form>
+      </section>
+      <section class="other-tweet">
+        <article>
+          <header>
+            <i class="fa-solid fa-user"></i>
+            <div class="username">Newton</div> 
+            <div class="account">@SirIsaac</div>
+          </header>
+            <p>If I have seen further it is by standing on the shoulders of giants</p>
+          <footer>
+            <div>10 days ago</div>
+            <div class="social-icon">
+              <i class="fa-solid fa-flag"></i>
+              <i class="fa-solid fa-retweet"></i>
+              <i class="fa-solid fa-heart"></i>
+            </div>
+          </footer>
+        </article>
+      </section>
+    </main>
   </body>
 </html>
