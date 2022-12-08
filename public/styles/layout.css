@@ -19,6 +19,7 @@ body {
   background-color: #f4f1ec;
   font-size: 24px;
   font-family: 'Source Sans Pro', sans-serif;
+  font-weight: 600;
 }
 
 /*
@@ -26,18 +27,25 @@ body {
  */
 
 main.container {
-  /* create margins to the left and right to use 90% width */
-  margin-left: 5%;
-  margin-right: 5%;
-  margin-bottom: 5%;
+  margin: 5%; /* creating 5% margins to every direction to use 90% width and height */
   display: flex;
   flex-direction: column;
   align-items: center;
 }
 
+/* data validation warning messages */
+section.new-tweet > div {
+  color: red;
+  border: 5px solid;
+  text-align: center;
+  align-content: center;
+  padding: 2em;
+  margin-bottom: 2em;
+}
+
 section.new-tweet textarea#tweet-text {
-  height: 2.2em;
-  width: 88vw;
+  height: 2.5em;
+  width: 89vw; /* new tweet input field slightly narrower than other tweets */
   background-color: inherit;
   border: 0px;
   border-bottom: solid;
@@ -50,10 +58,11 @@ section.new-tweet textarea#tweet-text {
 
 /* div containing tweet button and word counter */
 section.new-tweet div.tweet-counter {
-  height: 2.2em;
+  height: 2em;
   padding-top: .5em;
+  padding-right: .5em;
   margin-bottom: 5em;
-  font-size: medium;
+  font-size: .75em;
   display: flex;
   justify-content: space-between;
   font-family: 'Bungee', cursive;
@@ -63,50 +72,56 @@ section.new-tweet button#tweet {
   background: #4056A1;
   color: white;
   border: 0px;
+  padding-left: .5em;
+  padding-right: .5em;
 }
 
-section.other-tweet {
-  width: 90vw;
-  border-style: solid;
-  border-width: 5px;
+section.tweet-list {
+  width: 90vw; /* tweet list uses full width (90%) of main.container */
+}
+
+section.tweet-list > article.other-tweet {
+  border: 5px solid;
   padding: 1em;
+  margin-bottom: 3em;
 }
 
 /* header with profile image, username, and account id */
-section.other-tweet header {
+article.other-tweet header {
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
 
-/* other users' profile image */
-section.other-tweet i.fa-user {
-  font-size: 2em;
+article.other-tweet img.avatar {
   flex: 1;
 }
 
-section.other-tweet div.username{
+article.other-tweet div.username {
   flex: 15;
+  padding-left: .5em;
+  font-weight: 300;
 }
 
-section.other-tweet div.account{
+article.other-tweet div.account {
   flex: 1;
+  color: gray;
 }
 
-section.other-tweet p {
+article.other-tweet p {
   margin-left: -.5em; /* border has to go beyond the original margin */
   margin-right: -.5em;
   padding-left: 1em;
   padding-right: 1em;
   padding-top: 1.5em;
   padding-bottom: 1.5em;
-  font-weight: 600;
   border-bottom: solid;
   border-width: 4px;
+  overflow-wrap: break-word; /* word-wrap to keep content in the box */
 }
 
 /* footer contains tweet post date and social icons */ 
-section.other-tweet footer {
+article.other-tweet footer {
   display: flex;
   justify-content: space-between;
   font-size: medium;
@@ -114,9 +129,10 @@ section.other-tweet footer {
   padding-left: .5em;
   margin-top: -1.5em; /* reduce top and bottom margins */
   margin-bottom: -.5em;
+  font-weight: 300;
 }
 
-section.other-tweet div.social-icon {
+article.other-tweet div.social-icon {
   display: flex;
   justify-content: space-evenly;
   width: 7em;
