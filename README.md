@@ -1,18 +1,37 @@
 # Tweeter Project
 
-Tweeter is a simple, single-page Twitter clone.
+Tweeter is a simple, single-page Twitter clone. It is built with Node and Express, using jQuery, AJAX, and CSS to fetch and process stored data.
 
-This repository is the starter code for the project: Students will fork and clone this repository, then build upon it to practice their HTML, CSS, JS, jQuery and AJAX front-end skills, and their Node, Express back-end skills.
+## Final Product
 
-## Getting Started
-
-1. [Create](https://docs.github.com/en/repositories/creating-and-managing-repositories/creating-a-repository-from-a-template) a new repository using this repository as a template.
-2. Clone your repository onto your local device.
-3. Install dependencies using the `npm install` command.
-3. Start the web server using the `npm run local` command. The app will be served at <http://localhost:8080/>.
-4. Go to <http://localhost:8080/> in your browser.
+!["Desktop View"]()
+!["Tablet/Mobile View"]()
+!["Hidden Input Field"]()
+!["140 Character Counter"]()
+!["Mouse Hover Effect"]()
 
 ## Dependencies
 
 - Express
 - Node 5.10.x or above
+- Body-parser
+- Chance
+- MD5
+- TimeAgo.js
+
+## Getting Started
+
+- Install all dependencies (using the `npm install` command).
+- Run the development web server using the `node server/index.js` or `npm start` command in root folder.
+- Open `localhost:8080/` in your browser with the default port being 8080 (change PORT value in `server/index.js` in case of error).
+
+## Stretches
+
+- Reactive **Write a new tweet** button to toggle hide/reveal input field
+- Alternating **Scroll-to-top** button and the toggle button to prompt user input
+- ~~**SASS**~~
+
+## Known Issues
+
+- Clicking scroll-to-top button while scrolling the window will interrupt the event execution.
+- ESLint returning undefined errors for `$`, `document`, `window`, `alert`, etc., while they are properly loaded and fully operational.

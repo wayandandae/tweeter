@@ -1,10 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- Meta Information -->
+    <meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="description" content="Lighthouse Labs Week 4 - Tweeter Assignment">
+    <meta name="keywords" content="Lighthouse Labs, Tweeter, HTML, CSS, JavaScript, AJAX, jQuery">
+    <meta name="author" content="Jack Kang">
     <title>Tweeter - Home Page</title>
-
+  
     <!-- External CSS -->
     <!-- Normalize.css v8.0.1 as an alternative to CSS reset -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css" type="text/css" />
@@ -28,6 +32,8 @@
 
     <!-- App JS -->
     <script type="text/javascript" src="/scripts/client.js"></script>
+    <script type="text/javascript" src="/scripts/nav.js"></script>
+    <script type="text/javascript" src="/scripts/composer.js"></script>
     <script type="text/javascript" src="/scripts/composer-char-counter.js"></script>
   </head>
 
@@ -35,9 +41,9 @@
     <!-- Top nav bar (fixed) -->
     <nav>
       <span>TWEETER</span>
-      <div>
+      <div id="tweet-toggle">
         <b>Write</b> a new tweet<br>
-        <a href="#"><i class="fa-solid fa-angles-down"></i></a>
+        <i class="fa-solid fa-angles-down"></i>
       </div>
     </nav>
 
@@ -54,6 +60,7 @@
     <!-- Page-specific (main) content here -->
     <main class="container">
       <section class="new-tweet">
+        <!-- Error boxes to be revealed when conditions are met -->
         <div class="too-short" hidden>
           <i class="fa-solid fa-triangle-exclamation"></i>
           You cannot post an empty tweet. Please try again.
@@ -64,6 +71,7 @@
           Tweet cannot be longer than 140 characters. Please try again.
           <i class="fa-solid fa-triangle-exclamation"></i>
         </div>
+        <!-- Textarea to compose and post a new tweet -->
         <form>
           <label for="tweet-text">What are you humming about?</label>
           <textarea name="text" id="tweet-text"></textarea>
@@ -73,7 +81,9 @@
           </div>
         </form>
       </section>
+      <!-- Other tweets are rendered here -->
       <section class="tweet-list"></section>
     </main>
+    <button id="scroll-top" class="fa-solid fa-angles-up"></button>
   </body>
 </html>

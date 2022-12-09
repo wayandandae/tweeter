@@ -1,11 +1,8 @@
 nav {
   height: 120px;
   width: 100vw; /* use 100% viewport width */
-  background-color: #4056A1;
   color: white;
-  padding-left: 1.5em;
-  padding-right: 1.5em;
-  padding-top: 1.5em;
+  padding: 1.5em 1.5em 0;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
@@ -13,16 +10,26 @@ nav {
 }
 
 nav > span {
-  font-family: 'Bungee', cursive;
+  font-family: "Bungee", cursive;
   font-size: 2.2em;
 }
 
 nav > div {
   font-size: 1.2em;
   text-align: center;
+  cursor: pointer;
 }
 
 /* angle double down icon */
 i.fa-angles-down {
   color: red;
+  padding: 0 0.5em 0.5em; /* increase button responsive area */
+  position: relative;
+}
+
+/* Desktop Styles */
+@media only screen and (min-width: 1024px) {
+  nav {
+    background-color: #4056A1;
+  }
 }

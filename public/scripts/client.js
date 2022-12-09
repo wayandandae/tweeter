@@ -4,7 +4,7 @@
  * Reminder: Use (and do all your DOM work in) jQuery's document ready function
  */
 
-// create tweet markup element to be appended to tweet-list section
+// create tweet markup element to be added to tweet-list section
 const createTweetElement = tweet => {
   let $tweet = `
     <article class="other-tweet">
@@ -28,8 +28,10 @@ const createTweetElement = tweet => {
   return $tweet;
 };
 
-// add created markup element to tweet-list section using tweets array
+// add the newly created markup element to tweet-list section using tweets array
 const renderTweets = tweets => {
+  // empty all nodes under the section to prevent duplicate items being added
+  $('.tweet-list').empty();
   for (const tweet of tweets) {
     // prepend to view tweets in a reverse chronological order
     $('.tweet-list').prepend(createTweetElement(tweet));
@@ -38,21 +40,22 @@ const renderTweets = tweets => {
 
 // load data from /tweets using AJAX get method
 const loadTweets = () => {
-  $.ajax('/tweets', { method: 'get' }).then(data => renderTweets(data));
+  $.get('/tweets').then(data => renderTweets(data));
 };
 
-// escape cross-site scripting vulnerable string from the string
+// escape cross-site scripting vulnerable string from the user input
 const escapeXSS = str => {
   let div = document.createElement("div");
   div.appendChild(document.createTextNode(str));
   return div.innerHTML;
 };
 
-// DOM loading and jQuery actions
+// wait for DOMs to be loaded and perform jQuery actions within main.container
 $(document).ready(function() {
+  // load saved tweets as soon as possible
   loadTweets();
   // tweets list mouse hovering effect
-  // using on() instead of hover() to apply to dynamic children elements
+  // using on() instead of hover() to apply effects on dynamic children elements
   $('.tweet-list').on('mouseover', '.other-tweet', function() {
     $(this).css('box-shadow', '5px 5px gray');
   });
@@ -79,20 +82,20 @@ $(document).ready(function() {
     // if user has not entered anything in the input field, reveal relevant error message
     if (!$tweetContent) {
       $shortError.slideDown();
-      // if the user has entered more than 140 characters in the field,
+      // if the user has entered more than 140 characters in the field, reveal long error
     } else if ($tweetContent.length > 140) {
       $longError.slideDown();
     } else {
       // perform ajax post request with the XSS escaped user input
-      $.ajax('/tweets', { method: 'post', data: `text=${escapeXSS($tweetContent)}` })
+      $.post('/tweets', `text=${escapeXSS($tweetContent)}`)
         .done(() => {
           alert('Tweet posted!');
-          // hide existing error boxes if new input passes data validation
+          // hide existing error boxes if new user input passes data validation
           $shortError.slideUp();
           $longError.slideUp();
-          // form is cleared after tweet is posted
+          // form is cleared after the tweet is posted
           $userInput.val('');
-          // load the tweet again with the updated data array
+          // load tweets again with the updated data array
           loadTweets();
         })
         .fail((error) => alert(error.status + ': ' + error.statusText));

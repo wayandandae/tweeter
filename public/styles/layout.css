@@ -3,9 +3,10 @@
  * https://css-tricks.com/international-box-sizing-awareness-day/
  * Do not modify these two selectors, please
  */
-html {
+ html {
   box-sizing: border-box;
 }
+
 *, *:before, *:after {
   box-sizing: inherit;
 }
@@ -13,19 +14,17 @@ html {
 /*
  * Global layout stuff
  */
-
 body {
   color: #545149;
   background-color: #f4f1ec;
   font-size: 24px;
-  font-family: 'Source Sans Pro', sans-serif;
+  font-family: "Source Sans Pro", sans-serif;
   font-weight: 600;
 }
 
 /*
  * Additional CSS can be defined below or in other CSS files, as per instructions
  */
-
 main.container {
   margin: 5%; /* creating 5% margins to every direction to use 90% width and height */
   display: flex;
@@ -33,19 +32,19 @@ main.container {
   align-items: center;
 }
 
-/* data validation warning messages */
+/* data validation warning message boxes */
 section.new-tweet > div {
   color: red;
   border: 5px solid;
   text-align: center;
   align-content: center;
-  padding: 2em;
-  margin-bottom: 2em;
+  padding: 1.5em;
+  margin-bottom: 1em;
 }
 
 section.new-tweet textarea#tweet-text {
   height: 2.5em;
-  width: 89vw; /* new tweet input field slightly narrower than other tweets */
+  width: 89vw; /* new tweet input field slightly narrower than other tweets list */
   background-color: inherit;
   border: 0px;
   border-bottom: solid;
@@ -59,21 +58,21 @@ section.new-tweet textarea#tweet-text {
 /* div containing tweet button and word counter */
 section.new-tweet div.tweet-counter {
   height: 2em;
-  padding-top: .5em;
-  padding-right: .5em;
+  padding-top: 0.5em;
+  padding-right: 0.5em;
   margin-bottom: 5em;
-  font-size: .75em;
+  font-size: 0.75em;
   display: flex;
   justify-content: space-between;
-  font-family: 'Bungee', cursive;
+  font-family: "Bungee", cursive;
 }
 
 section.new-tweet button#tweet {
   background: #4056A1;
   color: white;
   border: 0px;
-  padding-left: .5em;
-  padding-right: .5em;
+  padding-left: 0.5em;
+  padding-right: 0.5em;
 }
 
 section.tweet-list {
@@ -99,7 +98,7 @@ article.other-tweet img.avatar {
 
 article.other-tweet div.username {
   flex: 15;
-  padding-left: .5em;
+  padding-left: 0.5em;
   font-weight: 300;
 }
 
@@ -109,26 +108,23 @@ article.other-tweet div.account {
 }
 
 article.other-tweet p {
-  margin-left: -.5em; /* border has to go beyond the original margin */
-  margin-right: -.5em;
-  padding-left: 1em;
-  padding-right: 1em;
-  padding-top: 1.5em;
-  padding-bottom: 1.5em;
+  margin-left: -0.5em; /* border has to go beyond the original margin */
+  margin-right: -0.5em;
+  padding: 1.5em 1em;
   border-bottom: solid;
   border-width: 4px;
-  overflow-wrap: break-word; /* word-wrap to keep content in the box */
+  word-break: break-all; /* word-wrap to keep content in the box */
 }
 
-/* footer contains tweet post date and social icons */ 
+/* footer contains tweet post date and social icons */
 article.other-tweet footer {
   display: flex;
   justify-content: space-between;
   font-size: medium;
-  padding-top: .5em;
-  padding-left: .5em;
+  padding-top: 0.5em;
+  padding-left: 0.5em;
   margin-top: -1.5em; /* reduce top and bottom margins */
-  margin-bottom: -.5em;
+  margin-bottom: -0.5em;
   font-weight: 300;
 }
 
@@ -136,4 +132,52 @@ article.other-tweet div.social-icon {
   display: flex;
   justify-content: space-evenly;
   width: 7em;
+}
+
+/* side scroll-to-top button to reveal when user starts scrolling */
+body > button#scroll-top {
+  display: none;
+  background-color: red;
+  border: none;
+  color: white;
+  text-align: center;
+  padding: 1em;
+  font-size: 1.5em;
+  border-radius: 50%;
+  position: fixed;
+  bottom: 1em;
+  right: 1em;
+  cursor: pointer;
+}
+
+body > button#scroll-top:hover {
+  background-color: gray;
+}
+
+/* Desktop Styles */
+@media only screen and (min-width: 1024px) {
+  body {
+    display: flex;
+  }
+  main.container {
+    width: 65%;
+    margin-top: 4.5em;
+  }
+  section.new-tweet {
+    width: 98%;
+    height: 12em;
+  }
+  section.new-tweet > div {
+    margin-top: 3%;
+  }
+  section.new-tweet form {
+    margin-top: 5em;
+  }
+  section.new-tweet textarea#tweet-text {
+    width: 100%;
+  }
+  section.tweet-list {
+    width: 100%;
+    margin-top: 5em;
+  }
 }

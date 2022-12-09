@@ -1,8 +1,10 @@
+// JS logic for counting tweet length
 $(document).ready(function() {
   let $wordCount = 0;
+  // callback action fired when a key is depressed then released
   $('#tweet-text').keyup(function() {
     $wordCount = $(this).val().length;
-    // find a child element with class name counter from the next sibling
+    // find a child element with ID counter from the next sibling
     const counter = $(this).next().children('#counter');
     counter.val(140 - $wordCount);
     if ($wordCount > 140) {
