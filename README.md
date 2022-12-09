@@ -27,8 +27,8 @@ Tweeter is a simple, single-page Twitter clone. It is built with Node and Expres
 
 ## Stretches
 
-- Reactive **Write a new tweet** button to toggle hide/reveal input field
-- Alternating **Scroll-to-top** button and the toggle button to prompt user input
+- Reactive **Write a new tweet** button to toggle hide/reveal input field.
+- Alternating **Scroll-to-top** button and the toggle button to prompt user input.
 - ~~**SASS**~~
 
 ## Known Issues

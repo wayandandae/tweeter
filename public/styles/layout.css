@@ -73,6 +73,7 @@ section.new-tweet button#tweet {
   border: 0px;
   padding-left: 0.5em;
   padding-right: 0.5em;
+  cursor: pointer;
 }
 
 section.tweet-list {
@@ -132,6 +133,7 @@ article.other-tweet div.social-icon {
   display: flex;
   justify-content: space-evenly;
   width: 7em;
+  cursor: pointer;
 }
 
 /* side scroll-to-top button to reveal when user starts scrolling */
