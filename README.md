@@ -4,11 +4,11 @@ Tweeter is a simple, single-page Twitter clone. It is built with Node and Expres
 
 ## Final Product
 
-!["Desktop View"]()
-!["Tablet/Mobile View"]()
-!["Hidden Input Field"]()
-!["140 Character Counter"]()
-!["Mouse Hover Effect"]()
+!["Screenshot of Desktop View"](https://github.com/wayandandae/tweeter/blob/master/docs/desktop.png)
+!["Screenshot of Tablet/Mobile View"](https://github.com/wayandandae/tweeter/blob/master/docs/tablet-mobile.png)
+!["Screenshot of Hidden Input Field"](https://github.com/wayandandae/tweeter/blob/master/docs/hidden-input.png)
+!["Screenshot of 140 Character Counter"](https://github.com/wayandandae/tweeter/blob/master/docs/word-counter.png)
+!["Screenshot of Mouse Hover Effect"](https://github.com/wayandandae/tweeter/blob/master/docs/hover-effect.png)
 
 ## Dependencies
 
