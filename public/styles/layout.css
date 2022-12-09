@@ -133,6 +133,9 @@ article.other-tweet div.social-icon {
   display: flex;
   justify-content: space-evenly;
   width: 7em;
+}
+
+div.social-icon > i {
   cursor: pointer;
 }
 
