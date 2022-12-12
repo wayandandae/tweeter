@@ -50,55 +50,53 @@ const escapeXSS = str => {
   return div.innerHTML;
 };
 
+// reveal error box, add class, and change css
+const boxReveal = element => {
+  element.slideDown();
+  element.addClass('error-box');
+  // default display css value of addClass is block so manually change to flex
+  element.css('display', 'flex');
+};
+
 // wait for DOMs to be loaded and perform jQuery actions within main.container
 $(document).ready(function() {
   // load saved tweets as soon as possible
   loadTweets();
-  // tweets list mouse hovering effect
-  // using on() instead of hover() to apply effects on dynamic children elements
-  $('.tweet-list').on('mouseover', '.other-tweet', function() {
-    $(this).css('box-shadow', '5px 5px gray');
-  });
-  $('.tweet-list').on('mouseout', '.other-tweet', function() {
-    $(this).removeAttr('style');
-  });
-  // social icons mouse hovering effect
-  $('.tweet-list').on('mouseover', 'i', function() {
-    $(this).css('color', '#ebc634');
-  });
-  $('.tweet-list').on('mouseout', 'i', function() {
-    $(this).removeAttr('style');
-  });
-  // button action to post a new tweet to the server
-  $('#tweet').click(function(event) {
+  // submit action to post a new tweet to the server
+  $('.tweet-form').submit(function(event) {
     // prevent page refresh
     event.preventDefault();
     // traverse through elements to get jQuery object of tweet-text textarea
-    let $userInput = $(this).parent().prev('#tweet-text');
+    const $userInput = $(this).children('#tweet-text');
     const $tweetContent = $userInput.val();
-    // hidden divs containing error messages for null or long input
-    const $shortError = $(this).parents('form').prevAll('.too-short');
-    const $longError = $(this).parents('form').prevAll('.too-long');
+    // hidden divs containing error messages for null, long input, or server error
+    const $errorBox = $(this).prev();
+    const $errorMsg = $errorBox.children('#error-msg');
     // if user has not entered anything in the input field, reveal relevant error message
     if (!$tweetContent) {
-      $shortError.slideDown();
+      $errorMsg.text('You cannot post an empty tweet. Please try again.');
+      boxReveal($errorBox);
       // if the user has entered more than 140 characters in the field, reveal long error
     } else if ($tweetContent.length > 140) {
-      $longError.slideDown();
+      $errorMsg.text('Tweet cannot be longer than 140 characters. Please try again.');
+      boxReveal($errorBox);
     } else {
       // perform ajax post request with the XSS escaped user input
       $.post('/tweets', `text=${escapeXSS($tweetContent)}`)
         .done(() => {
-          alert('Tweet posted!');
-          // hide existing error boxes if new user input passes data validation
-          $shortError.slideUp();
-          $longError.slideUp();
+          // hide existing error box if new user input passes data validation
+          $errorBox.slideUp();
           // form is cleared after the tweet is posted
           $userInput.val('');
+          // and the character counter is reset
+          $('#counter').val('140');
           // load tweets again with the updated data array
           loadTweets();
         })
-        .fail((error) => alert(error.status + ': ' + error.statusText));
+        .fail((error) => {
+          $errorMsg.text(`Error ${error.status}: ${error.statusText}`);
+          boxReveal($errorBox);
+        });
     }
   });
 });

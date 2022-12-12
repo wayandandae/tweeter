@@ -13,11 +13,14 @@ $(document).ready(function() {
   });
   // if the user clicked the text or button,
   $toggleButton.parent().click(function() {
+    const $composeBox = $('section.new-tweet');
     // and if input field is already visible, hide the element, vice-versa
-    if ($('section.new-tweet').is(':visible')) {
-      $('section.new-tweet').slideUp();
+    if ($composeBox.is(':visible')) {
+      $composeBox.slideUp();
     } else {
-      $('section.new-tweet').slideDown();
+      $composeBox.slideDown();
+      // focus cursor on tweet-text textarea when $composeBox is revealed
+      $composeBox.find('#tweet-text').focus();
     }
   });
 });

@@ -60,19 +60,14 @@
     <!-- Page-specific (main) content here -->
     <main class="container">
       <section class="new-tweet">
-        <!-- Error boxes to be revealed when conditions are met -->
-        <div class="too-short" hidden>
+        <!-- Error boxes to be revealed when certain conditions are met -->
+        <div hidden>
           <i class="fa-solid fa-triangle-exclamation"></i>
-          You cannot post an empty tweet. Please try again.
-          <i class="fa-solid fa-triangle-exclamation"></i>
-        </div>
-        <div class="too-long" hidden>
-          <i class="fa-solid fa-triangle-exclamation"></i>
-          Tweet cannot be longer than 140 characters. Please try again.
+          <div id="error-msg"></div>
           <i class="fa-solid fa-triangle-exclamation"></i>
         </div>
         <!-- Textarea to compose and post a new tweet -->
-        <form>
+        <form class="tweet-form">
           <label for="tweet-text">What are you humming about?</label>
           <textarea name="text" id="tweet-text"></textarea>
           <div class="tweet-counter">
